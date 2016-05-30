@@ -1,16 +1,25 @@
 <html>
-<title>AngularJS Directives</title>
+<head>
+	<title>Angular JS Controller</title>
+</head>
 <body>
-	<h1>Sample Application</h1>
-	<div ng-app="" ng-init="countries=[{locale:'en-US',name:'United States'},
-	{locale:'en-GB',name:'United Kingdom'},
-	{locale:'en-FR',name:'France'}]"> <p>Enter your Name: <input type="text" ng-model="name"></p>
-	<p>Hello <span ng-bind="name"></span>!</p> <p>List of Countries with locale:</p>
-	<ol>
-		<li ng-repeat="country in countries">
-			{{ 'Country: ' + country.name + ', Locale: ' + country.locale }}
-		</li> </ol>
+	<h2>AngularJS Sample Application</h2>
+	<div ng-app="" ng-controller="studentController">
+		Enter first name: <input type="text" ng-model="student.firstName"><br><br> Enter last name: <input type="text" ng-model="student.lastName"><br>
+		<br>
+		You are entering: {{student.fullName()}}
 	</div>
+	<script>
+		function studentController($scope) {
+			$scope.student = {
+				firstName: "Mahesh",
+				lastName: "Parashar",
+				fullName: function() {
+					var studentObject;
+					studentObject = $scope.student;
+					return studentObject.firstName + " " + studentObject.lastName;
+				} };
+		} </script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"> </script>
 </body>
 </html>
